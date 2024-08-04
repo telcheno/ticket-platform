@@ -19,6 +19,9 @@ public class Ticket{
 
 	@Column(name = "titolo", nullable = false)
 	private Boolean titolo;
+
+	@Column(name = "stato", nullable = false)
+	private Boolean stato;
 			
 	@Column(name = "id_operatore", nullable = false)
 	private Integer idOperatore;
@@ -46,6 +49,14 @@ public class Ticket{
 
 	public void setTitolo(Boolean titolo) {
 		this.titolo = titolo;
+	}
+
+	public Boolean getStato() {
+		return stato;
+	}
+
+	public void setStato(Boolean stato) {
+		this.stato = stato;
 	}
 
 	public Integer getIdOperatore() {
