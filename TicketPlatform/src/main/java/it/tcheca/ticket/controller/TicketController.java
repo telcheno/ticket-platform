@@ -1,5 +1,6 @@
 package it.tcheca.ticket.controller;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +30,19 @@ public class TicketController {
 	
 	//metodo di acceso
 	@GetMapping
-	public String index(Model model) {
+	public String index(Model model,
+			@RequestParam(name = "stato", required = false) String stato) {
 		
-		List<Ticket> tickets = repoTicket.findAll();
+		List<Ticket> tickets = new ArrayList<>();
+		
+		if(stato == null || stato.isBlank()) {
+		
+			tickets = repoTicket.findAll();
+		
+		} else {
+		
+			tickets = repoTicket.findByStatoOrderByIdDesc(stato);
+		}
 		
 		model.addAttribute("list", tickets);
 		
@@ -67,7 +78,7 @@ public class TicketController {
 		
 		//se intercetta errori resta nella pagina
 		if(bindingResult.hasErrors()) {
-		return "/homeTemplates/create";
+		return "/homeTemplates/show";
 		}
 		
 		//se non ci sono errori sala i dati e torna nel index

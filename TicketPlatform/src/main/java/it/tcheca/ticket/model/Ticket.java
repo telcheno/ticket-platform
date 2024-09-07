@@ -34,7 +34,7 @@ public class Ticket{
 	@Column(name = "id_categoria", nullable = false)
 	private String categoria;
 	
-	@Column(name = "id_nota", nullable = false)
+	@Column(name = "id_nota")
 	private Integer nota;
 
 	

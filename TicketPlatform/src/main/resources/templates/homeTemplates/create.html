@@ -28,7 +28,7 @@
 					<form
 						id="ticket-form"
 						th:object="${ticket}"
-						th:action="@{/homeTemplates/create}"
+						th:action="@{/tickets/create}"
 						method="post">
 						
 						<label for="titolo" name="TITOLO">Titolo</label>
@@ -63,9 +63,31 @@
 				   				</li>
 							</ul>
 						</div>
+						
+						<label for="operatore" name="OPERATORE">Operatore</label>
+						<input type="text" class="form-control" 
+								id="operatore" th:field="*{operatore}" th:errorClass="is-invalid">
+						<div th:if="${#fields.hasErrors('operatore')}" class="invalid-feedback">
+							<ul>
+							   	<li th:each="err : ${#fields.errors('operatore')}" 
+									th:text="${err}">
+				   				</li>
+							</ul>
+						</div>
+						
+						<label for="nota" name="NOTA">Nota</label>
+						<input type="text" class="form-control" 
+								id="nota" th:field="*{nota}" th:errorClass="is-invalid">
+						<div th:if="${#fields.hasErrors('nota')}" class="invalid-feedback">
+							<ul>
+							   	<li th:each="err : ${#fields.errors('nota')}" 
+									th:text="${err}">
+				   				</li>
+							</ul>
+						</div>
 	
 						<button class="btn btn-primary"> Aggiungi</button>
-						<button class="btn btn-primary"> Torna sulla lista</button>
+<!--						<button class="btn btn-primary"> Torna sulla lista</button>-->
 					</form>	
 		
 				</div>
