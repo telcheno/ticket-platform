@@ -6,31 +6,36 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "ticket")
+@Entity //define l'enetita della tabella
+@Table(name = "ticket") //define ilnome della tabella
 public class Ticket{
 
-	//anotazione come id
-	@Id
-	//amotazione auto increment
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@Id //define colllona della tabella come ID
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //define il valre autoincrement
+	private Integer id; //la collona prende il nome del atributo
 
+	//per definire gli atrubuti nelle collone uso @Column e @NotNull o @NotBlank per la validazione
+	@NotBlank(message = "Il titolo non puo esere null")
 	@Column(name = "titolo", nullable = false)
-	private Boolean titolo;
+	private String titolo;
 
-	@Column(name = "stato", nullable = false)
-	private Boolean stato;
+	@NotBlank(message = "Il stato non puo esere null")
+	@Column(name = "stato", nullable = false) // nullable define il vallore not null 
+	private String stato;
 			
-	@Column(name = "id_operatore", nullable = false)
-	private Integer idOperatore;
+	//si puo personalizare il nome della collona del DB
+	@Column(name = "id_operatore", nullable = false) 
+	private Integer operatore;
 			
+	@NotBlank(message = "Il categoria non puo esere null")
 	@Column(name = "id_categoria", nullable = false)
-	private Integer idCategoria;
+	private String categoria;
 	
 	@Column(name = "id_nota", nullable = false)
-	private Integer idNota;
+	private Integer nota;
 
 	
 	
@@ -43,44 +48,44 @@ public class Ticket{
 		this.id = id;
 	}
 
-	public Boolean getTitolo() {
+	public String getTitolo() {
 		return titolo;
 	}
 
-	public void setTitolo(Boolean titolo) {
+	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
 
-	public Boolean getStato() {
+	public String getStato() {
 		return stato;
 	}
 
-	public void setStato(Boolean stato) {
+	public void setStato(String stato) {
 		this.stato = stato;
 	}
 
-	public Integer getIdOperatore() {
-		return idOperatore;
+	public Integer getOperatore() {
+		return operatore;
 	}
 
-	public void setIdOperatore(Integer idOperatore) {
-		this.idOperatore = idOperatore;
+	public void setOperatore(Integer operatore) {
+		this.operatore = operatore;
 	}
 
-	public Integer getIdCategoria() {
-		return idCategoria;
+	public String getCategoria() {
+		return categoria;
 	}
 
-	public void setIdCategoria(Integer idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
-	public Integer getIdNota() {
-		return idNota;
+	public Integer getNota() {
+		return nota;
 	}
 
-	public void setIdNota(Integer idNota) {
-		this.idNota = idNota;
+	public void setNota(Integer nota) {
+		this.nota = nota;
 	}
 	
 	

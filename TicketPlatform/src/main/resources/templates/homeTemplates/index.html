@@ -1,42 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 	<head>
-	    <meta charset="UTF-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <title>Ticket Platfrom</title>
+	
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+			  rel="stylesheet"
+			  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+		
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+		
+		<title>Home Ticket</title>
 	</head>
 	<body>
-		<div class="container text-center">
-		    
-			<h1>HOME TICKETS</h1>
-			<h3>Elenco Operatori</h3>
+		
+			<div class="container text-center">
 			
-			<table id="table-1" class="table table-striped table-hover">
-					<thead>
-					    <tr>
-					      <th>NOME</th>
-					      <th>COGNOME</th>
-					      <th>STATO</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-						<tr th:each="operatore : ${list}">
-					      <td th:text="${operatore.nome}"></td>
-					      <td th:text="${operatore.cognome}"></td>
-					      <td th:text="${operatore.stato}"></td>
-						  <td>
-								<a class="btn btn-primary"
-								   th:href="@{|/home/show/${operatore.id}|}"> 
-								   <i class="bi bi-person-circle"></i>
-								</a>
-							  </td>						  
+				<h1>Home Tickets</h1>
+		<!--	<div class="row d-flex justify-content-between mb-3">-->
+			
+				<div class="container">
+		
+					<table id="table-1" class="table table-striped">
+						<thead>
+							<tr>
+								<th class="col-4">Titolo</th>
+								<th class="col-3">Categoria </th>
+								<th class="col-3">Stato </th>
 							</tr>
-						  </tbody>
-						</table>
-			
-		</div>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+						</thead>
+							<tbody>
+								<tr th:each="tickets : ${list}">
+									<td th:text=" ${tickets.titolo}"></td>
+									<td th:text=" ${tickets.categoria}"></td>
+									<td th:text=" ${tickets.stato}"></td>
+									
+									<td><a class="btn btn-primary"
+										   th:href="@{|/tickets/show/${tickets.id}|}">
+										<i class="bi bi-ticket-perforated"></i>
+									</a></td>
+															
+									<td><a class="btn btn-primary"
+										   th:href="@{|/tickets/show/${tickets.id}|}">
+										   <i class="bi bi-pencil-square"></i>
+									</a></td>
+															
+									<td><a class="btn btn-danger"
+										   th:href="@{|/tickets/show/${tickets.id}|}">
+										   <i class="bi bi-trash3"></i>
+									</a></td>						
+								</tr>
+						</tbody>
+					</table>			
+		
+				</div>
+			</div>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+					integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+					crossorigin="anonymous"></script>
+		<!--	<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>-->
 	</body>
 </html>
