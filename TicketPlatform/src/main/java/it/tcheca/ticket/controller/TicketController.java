@@ -78,7 +78,7 @@ public class TicketController {
 		
 		//se intercetta errori resta nella pagina
 		if(bindingResult.hasErrors()) {
-		return "/homeTemplates/show";
+		return "/homeTemplates/create";
 		}
 		
 		//se non ci sono errori sala i dati e torna nel index
