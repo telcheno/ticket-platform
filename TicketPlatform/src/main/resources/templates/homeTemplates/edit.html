@@ -23,7 +23,7 @@
 				<h1>Aggiornamento Tickets</h1>
 			
 				<div class="container">
-					<h2>Aggiorna i valori per creare un nuovo ticket</h2>		
+					<h2>Aggiorna i valori del ticket</h2>		
 		
 					<form
 						id="ticket-form"
@@ -86,8 +86,10 @@
 							</ul>
 						</div>
 	
-						<button class="btn btn-primary"> Aggiungi</button>
-<!--						<button class="btn btn-primary"> Torna sulla lista</button>-->
+						<button class="btn btn-primary">Aggiorna</button>
+						<a class="btn btn-success" th:href="@{/tickets}">
+							Porta Home Ticket</a>
+
 					</form>	
 		
 				</div>

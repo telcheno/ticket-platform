@@ -113,4 +113,13 @@ public class TicketController {
 		return "redirect:/tickets";
 		
 	}
+	
+	//metodo di acceso per cancellare il ticket
+	@PostMapping("/delete/{id}")
+	public String delete(@PathVariable("id") Integer id) {
+		
+		repoTicket.deleteById(id);
+		
+		return "redirect:/tickets";
+	}
 }

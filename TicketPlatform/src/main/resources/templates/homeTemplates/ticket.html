@@ -29,9 +29,18 @@
 					<h3 th:text="${ticket.stato}"></h3>		
 					<samp th:text="|Categoria: ${ticket.categoria}|"></samp>
 					<br>
-				    <samp th:text="|Operatore: ${ticket.operatore}|"></samp>
-	
-		
+				    <samp th:text="|Operatore: ${ticket.operatore}|"></samp>					
+					<br>
+				    <samp th:text="|Nota: ${ticket.nota}|"></samp>
+					
+				</div>
+				<div class="container">
+					<a class="btn btn-success" th:href="@{/tickets}">
+						Porta Home Ticket</a>
+				
+					<a class="btn btn-success" th:href="@{/tickets/edit/{id}(id=${ticket.id})}">
+						Aggiorna Ticket</a>
+						
 				</div>
 			</div>
 		<!--	<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>-->
