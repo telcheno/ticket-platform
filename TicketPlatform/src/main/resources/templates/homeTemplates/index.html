@@ -34,7 +34,7 @@
 							<tbody>
 								<tr th:each="tickets : ${list}">
 									<td th:text=" ${tickets.titolo}"></td>
-									<td th:text=" ${tickets.categoria}"></td>
+									<td th:text="|Categoria: ${tickets.categoria}|"></td>
 									<td th:text=" ${tickets.stato}"></td>
 									
 									<td><a class="btn btn-primary"

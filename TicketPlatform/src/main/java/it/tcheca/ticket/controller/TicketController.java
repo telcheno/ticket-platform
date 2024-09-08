@@ -57,6 +57,7 @@ public class TicketController {
 		return "/homeTemplates/ticket";
 	}
 	
+	//metodo di acceso per creare il ticket
 	@GetMapping("/create")
 	
 	public String create(Model model) {
@@ -66,7 +67,6 @@ public class TicketController {
 		return "/homeTemplates/create";
 	}
 	
-	//metodo di acceso
 	@PostMapping("/create")
 	public String store(
 		//recupero i dati del from valorizati e vailidati tramite le anotasion
@@ -81,8 +81,36 @@ public class TicketController {
 		return "/homeTemplates/create";
 		}
 		
-		//se non ci sono errori sala i dati e torna nel index
+		//se non ci sono errori salva i dati e torna nel index
 		repoTicket.save(formTicket);
 		return "redirect:/tickets";
+	}
+	
+	//metodo di acceso per aggiornare il ticket
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Integer id, Model model) {
+	
+		model.addAttribute("ticket", repoTicket.getReferenceById(id));
+		
+		return "/homeTemplates/edit";
+	}
+	
+	@PostMapping("/edit/{id}")
+	public String update(
+		
+		@Valid @ModelAttribute("ticket") Ticket ticket,
+			
+		BindingResult bindingResult,
+		Model model){
+			
+		if(bindingResult.hasErrors()) {
+		
+		return "/homeTemplates/edit";
+		}
+			
+		repoTicket.save(ticket);
+			
+		return "redirect:/tickets";
+		
 	}
 }

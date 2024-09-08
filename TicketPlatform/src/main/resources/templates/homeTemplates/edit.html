@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+	<head>
+	
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+			  rel="stylesheet"
+			  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<!--		<link th:rel="stylesheet"-->
+<!--			th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" />-->
+		
+		<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">-->
+		
+		<title>Aggiornamento Ticket</title>
+	</head>
+	<body>
+		
+			<div class="container text-center">
+			
+				<h1>Aggiornamento Tickets</h1>
+			
+				<div class="container">
+					<h2>Aggiorna i valori per creare un nuovo ticket</h2>		
+		
+					<form
+						id="ticket-form"
+						th:object="${ticket}"
+						th:action="@{/tickets/edit/{id}(id=${ticket.id})}"
+						method="post">
+						
+						<label for="titolo" name="TITOLO">Titolo</label>
+						<input type="text" class="form-control" 
+								id="titolo" th:field="*{titolo}" th:errorClass="is-invalid">
+						<div th:if="${#fields.hasErrors('titolo')}" class="invalid-feedback">
+							<ul>
+							   	<li th:each="err : ${#fields.errors('titolo')}" 
+									th:text="${err}">
+				   				</li>
+							</ul>
+						</div>
+	
+						<label for="categoria" name="CATEGORIA">Categoria</label>
+						<input type="text" class="form-control" 
+								id="categoria" th:field="*{categoria}" th:errorClass="is-invalid">
+						<div th:if="${#fields.hasErrors('categoria')}" class="invalid-feedback">
+							<ul>
+							   	<li th:each="err : ${#fields.errors('categoria')}" 
+									th:text="${err}">
+				   				</li>
+							</ul>
+						</div>
+	
+						<label for="stato" name="STATO">Stato</label>
+						<input type="text" class="form-control" 
+								id="stato" th:field="*{stato}" th:errorClass="is-invalid">
+						<div th:if="${#fields.hasErrors('stato')}" class="invalid-feedback">
+							<ul>
+							   	<li th:each="err : ${#fields.errors('stato')}" 
+									th:text="${err}">
+				   				</li>
+							</ul>
+						</div>
+						
+						<label for="operatore" name="OPERATORE">Operatore</label>
+						<input type="text" class="form-control" 
+								id="operatore" th:field="*{operatore}" th:errorClass="is-invalid">
+						<div th:if="${#fields.hasErrors('operatore')}" class="invalid-feedback">
+							<ul>
+							   	<li th:each="err : ${#fields.errors('operatore')}" 
+									th:text="${err}">
+				   				</li>
+							</ul>
+						</div>
+						
+						<label for="nota" name="NOTA">Nota</label>
+						<input type="text" class="form-control" 
+								id="nota" th:field="*{nota}" th:errorClass="is-invalid">
+						<div th:if="${#fields.hasErrors('nota')}" class="invalid-feedback">
+							<ul>
+							   	<li th:each="err : ${#fields.errors('nota')}" 
+									th:text="${err}">
+				   				</li>
+							</ul>
+						</div>
+	
+						<button class="btn btn-primary"> Aggiungi</button>
+<!--						<button class="btn btn-primary"> Torna sulla lista</button>-->
+					</form>	
+		
+				</div>
+			</div>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!--			<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>-->
+	</body>
+</html>
