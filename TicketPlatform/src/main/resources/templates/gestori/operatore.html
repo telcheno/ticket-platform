@@ -10,40 +10,42 @@
 			  rel="stylesheet"
 			  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 		
-		<title>Crea Ticket</title>
+		<title>Operatori</title>
 	</head>
 	<body>
 		
 			<div class="container text-center">
 			
-				<h1>Inserimento Tickets</h1>
+				<h1>Operatori</h1>
 			
 				<div class="container">
-					<h2>Inserisci i valori per creare un nuovo ticket</h2>		
+					<h2>Operatore del ticket:
+						<span th:text="${operatore.ticket.titolo}"></span>
+					</h2>		
 		
 					<form
 						id="ticket-form"
-						th:object="${ticket}"
+						th:object="${operatore}"
 						th:action="@{/tickets/create}"
 						method="post">
 						
-						<label for="titolo" name="TITOLO">Titolo</label>
-						<input type="text" class="form-control" 
-								id="titolo" th:field="*{titolo}" th:errorClass="is-invalid">
-						<div th:if="${#fields.hasErrors('titolo')}" class="invalid-feedback">
+						<label for="inizio_gestione" name="data inizio gestione">Data inizio gestione</label>
+						<input type="date" class="form-control" 
+								id="inizio_gestione" th:field="*{dataInizioGestione}" th:errorClass="is-invalid">
+						<div th:if="${#fields.hasErrors('dataInizioGestione')}" class="invalid-feedback">
 							<ul>
-							   	<li th:each="err : ${#fields.errors('titolo')}" 
+							   	<li th:each="err : ${#fields.errors('dataInizioGestione')}" 
 									th:text="${err}">
 				   				</li>
 							</ul>
 						</div>
 	
-						<label for="categoria" name="CATEGORIA">Categoria</label>
-						<input type="text" class="form-control" 
-								id="categoria" th:field="*{categoria}" th:errorClass="is-invalid">
-						<div th:if="${#fields.hasErrors('categoria')}" class="invalid-feedback">
+						<label for="fine_gestione" name="data fine gestione">Data fine gestione</label>
+						<input type="date" class="form-control" 
+								id="fine_gestione" th:field="*{dataFineGestione}" th:errorClass="is-invalid">
+						<div th:if="${#fields.hasErrors('dataFineGestione')}" class="invalid-feedback">
 							<ul>
-							   	<li th:each="err : ${#fields.errors('categoria')}" 
+							   	<li th:each="err : ${#fields.errors('dataFineGestione')}" 
 									th:text="${err}">
 				   				</li>
 							</ul>

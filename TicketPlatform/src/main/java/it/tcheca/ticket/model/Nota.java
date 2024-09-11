@@ -17,10 +17,34 @@ public class Nota {
 	
 	@Column(name = "titolo", nullable = false)
 	private String titolo;
-	
-	@Column(name = "stato", nullable = false)
-	private String stato;
 
 	@Column(name = "testo", nullable = false)
 	private String testo;
+
+	//getter e setter
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getTitolo() {
+		return titolo;
+	}
+
+	public void setTitolo(String titolo) {
+		this.titolo = titolo;
+	}
+
+	public String getTesto() {
+		return testo;
+	}
+
+	public void setTesto(String testo) {
+		this.testo = testo;
+	}
+	
+	
 }

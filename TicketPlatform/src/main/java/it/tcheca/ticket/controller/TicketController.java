@@ -1,6 +1,6 @@
 package it.tcheca.ticket.controller;
 
-
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.tcheca.ticket.model.Operatore;
 import it.tcheca.ticket.model.Ticket;
+import it.tcheca.ticket.repository.RepoOperatore;
 import it.tcheca.ticket.repository.RepoTickect;
 import jakarta.validation.Valid;
 
@@ -28,10 +30,13 @@ public class TicketController {
 	@Autowired
 	private RepoTickect repoTicket;
 	
+	@Autowired
+	private RepoOperatore repoOperatore;
+	
 	//metodo di acceso
 	@GetMapping
 	public String index(Model model,
-			@RequestParam(name = "stato", required = false) String stato) {
+			@RequestParam(name = "titolo", required = false) String stato) {
 		
 		List<Ticket> tickets = new ArrayList<>();
 		
@@ -122,4 +127,20 @@ public class TicketController {
 		
 		return "redirect:/tickets";
 	}
+	
+	@GetMapping("/{id}/opeatore")
+	public String operatore(@PathVariable("id") Integer id, Model model) {
+		
+		Operatore operatore =new Operatore();
+		operatore.setDataInizioGestione(LocalDate.now());
+		operatore.setTicket(repoTicket.getReferenceById(id));
+		
+		model.addAttribute("operatore", operatore);
+		
+		return "opeatore/edit";
+	}
+		
+	
+	
+	
 }
