@@ -29,13 +29,39 @@
 				    <samp th:text="|Nota: ${ticket.nota}|"></samp>
 					
 				</div>
+				<div class="container" 
+				>
+<!--				th:unless="${ticket.operatores.isEmpty()}"-->
+					<table id="operatori" class="table table-striped">
+						<thead>
+							<tr>
+								<td>Inizio Gestione</td>
+								<td>Fine Gestione</td>
+								<td>Nota</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="operatore : ${ticket.operatores}">
+								
+								<td th:text="${operatore.dataInizioGestione}"></td>
+								<td th:text="${operatore.dataInizioGestione}"></td>
+								<td th:text="${operatore.note}"></td>
+								
+							</tr>
+						</tbody>
+						
+					</table>
+				</div>
+<!--				<div th:if="${ticket.operatores.isEmpty()}" >-->
+<!--					<p >Il ticket deve essere gestito</p>-->
+<!--				</div>-->
 				<div class="container d-flex justify-content-between mx-auto p-2" style="width: auto;">
 					<a class="btn btn-success" th:href="@{/tickets}">Torna Home Ticket</a>
-				
+					<a class="btn btn-primary" th:href="@{/tickets/{id}/gestori/operatore(id=${ticket.id})}">Gestione Ticket</a>
 					<a class="btn btn-primary" th:href="@{/tickets/edit/{id}(id=${ticket.id})}">Aggiorna Ticket</a>
 						
 				</div>
 			</div>
-		<!--	<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>-->
+			<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 	</body>
 </html>

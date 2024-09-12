@@ -148,7 +148,5 @@ public class Operatore {
 	public void setRuolo(String ruolo) {
 		this.ruolo = ruolo;
 	}
-	
-	
-	
+		
 }

@@ -76,10 +76,10 @@ public class TicketController {
 	public String store(
 		//recupero i dati del from valorizati e vailidati tramite le anotasion
 		@Valid @ModelAttribute("ticket") Ticket formTicket,
+		Model model,
 		
 		//ascolta e intercetta il sumit del form
-		BindingResult bindingResult,
-		Model model){
+		BindingResult bindingResult){
 		
 		//se intercetta errori resta nella pagina
 		if(bindingResult.hasErrors()) {
@@ -97,7 +97,7 @@ public class TicketController {
 	
 		model.addAttribute("ticket", repoTicket.getReferenceById(id));
 		
-		return "/homeTemplates/edit";
+		return " ";
 	}
 	
 	@PostMapping("/edit/{id}")
@@ -128,7 +128,9 @@ public class TicketController {
 		return "redirect:/tickets";
 	}
 	
-	@GetMapping("/{id}/opeatore")
+	
+	//metodo di acceso alle relazioni
+	@GetMapping("/{id}/operatore")
 	public String operatore(@PathVariable("id") Integer id, Model model) {
 		
 		Operatore operatore =new Operatore();
@@ -137,7 +139,7 @@ public class TicketController {
 		
 		model.addAttribute("operatore", operatore);
 		
-		return "opeatore/edit";
+		return "operatore/edit";
 	}
 		
 	

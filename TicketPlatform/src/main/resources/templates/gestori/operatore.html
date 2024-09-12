@@ -19,14 +19,14 @@
 				<h1>Operatori</h1>
 			
 				<div class="container">
-					<h2>Operatore del ticket:
+					<h2>Gestione ticket:
 						<span th:text="${operatore.ticket.titolo}"></span>
 					</h2>		
 		
 					<form
-						id="ticket-form"
+						id="operatore-form"
 						th:object="${operatore}"
-						th:action="@{/tickets/create}"
+						th:action="${editMode} ? @{|/operatori/create/${operatore.id}|} : @{/operatore/create}"
 						method="post">
 						
 						<label for="inizio_gestione" name="data inizio gestione">Data inizio gestione</label>
@@ -51,42 +51,21 @@
 							</ul>
 						</div>
 	
-						<label for="stato" name="STATO">Stato</label>
+						<label for="note" name="note">Note</label>
 						<input type="text" class="form-control" 
-								id="stato" th:field="*{stato}" th:errorClass="is-invalid">
-						<div th:if="${#fields.hasErrors('stato')}" class="invalid-feedback">
+								id="note" th:field="*{note}" th:errorClass="is-invalid">
+						<div th:if="${#fields.hasErrors('note')}" class="invalid-feedback">
 							<ul>
-							   	<li th:each="err : ${#fields.errors('stato')}" 
+							   	<li th:each="err : ${#fields.errors('note')}" 
 									th:text="${err}">
 				   				</li>
 							</ul>
 						</div>
 						
-						<label for="operatore" name="OPERATORE">Operatore</label>
-						<input type="text" class="form-control" 
-								id="operatore" th:field="*{operatore}" th:errorClass="is-invalid">
-						<div th:if="${#fields.hasErrors('operatore')}" class="invalid-feedback">
-							<ul>
-							   	<li th:each="err : ${#fields.errors('operatore')}" 
-									th:text="${err}">
-				   				</li>
-							</ul>
-						</div>
-						
-						<label for="nota" name="NOTA">Nota</label>
-						<input type="text" class="form-control" 
-								id="nota" th:field="*{nota}" th:errorClass="is-invalid">
-						<div th:if="${#fields.hasErrors('nota')}" class="invalid-feedback">
-							<ul>
-							   	<li th:each="err : ${#fields.errors('nota')}" 
-									th:text="${err}">
-				   				</li>
-							</ul>
-						</div>
-	
+
 						<div class="container d-flex justify-content-between mx-auto p-2" style="width: auto;">
 
-							<a class="btn btn-primary"> Aggiungi</a>
+							<a class="btn btn-primary">Crea</a>
 							<a class="btn btn-success" th:href="@{/tickets}">
 							  Porta Home Ticket</a>
 						</div>	
